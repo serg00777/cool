@@ -1,0 +1,34 @@
+import random
+
+# Список слов для угадывания
+words = ['кот', 'собака', 'книга', 'автомобиль', 'дом', 'телефон']
+
+# Функция выбора слова из списка
+def choose_word(words):
+    return random.choice(words)
+
+# Функция для отображения текущего состояния игры
+def display_game_state(word, guessed_letters):
+    displayed_word = ''
+    for letter in word:
+        if letter in guessed_letters:
+            displayed_word += letter
+        else:
+            displayed_word += '_'
+    print(displayed_word)
+
+# Основная функция игры
+def play_game():
+    print('Добро пожаловать в игру "Виселица"!')
+    print('Попробуйте угадать слово.')
+    word = choose_word(words)
+    guessed_letters = set()
+    attempts_left = 6
+    while attempts_left > 0:
+        print('У вас осталось', attempts_left, 'попыток.')
+        display_game_state(word, guessed_letters)
+        guess = input('Введите букву: ')
+        guessed_letters.add(guess)
+        if guess in word:
+            print('Вы угадали букву!')
+        else
